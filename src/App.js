@@ -1,4 +1,10 @@
-import React, { useState, useEffect, createContext, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  createContext,
+  useMemo,
+  Navigate,
+} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -19,7 +25,9 @@ export const ToasterContext = createContext();
 
 const App = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const [language, setLanguage] = useState(localStorage.getItem("language") || "english");
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "english"
+  );
   const [toaster, setToaster] = useState("");
 
   useEffect(() => {
@@ -74,6 +82,11 @@ const App = () => {
             <Toaster />
             <Navbar />
             <Routes>
+              <Route
+                exact
+                path="/note-app-online"
+                element={<Navigate replace to="/" />}
+              />
               <Route
                 exact
                 path="/register"
