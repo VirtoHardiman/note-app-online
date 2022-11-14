@@ -22,9 +22,13 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Link to="/">NoteApp</Link>
+      <Link to="/note-app-online">NoteApp</Link>
       {username ? (
-        <Link to="/login" onClick={resetCurrentUser} className="logout-button">
+        <Link
+          to="/note-app-online/login"
+          onClick={resetCurrentUser}
+          className="logout-button"
+        >
           <p>{username.slice(1, -1)}</p>
           <MdOutlineLogout alt="logout-icon" />
         </Link>

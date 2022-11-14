@@ -20,12 +20,16 @@ const Register = () => {
     setIsLoading(true);
     if (password !== passwordConfirmation) {
       setIsLoading(false);
-      return toggleToaster(language === "english" ? "Password confirmation is not matched" : "Konfirmasi kata sandi tidak sesuai");
+      return toggleToaster(
+        language === "english"
+          ? "Password confirmation is not matched"
+          : "Konfirmasi kata sandi tidak sesuai"
+      );
     }
     const { status, message } = await register({ name, email, password });
     if (status === "success") {
       toggleToaster(message);
-      navigate("/login");
+      navigate("/note-app-online/login");
     }
     setIsLoading(false);
     toggleToaster(message);
@@ -35,15 +39,52 @@ const Register = () => {
     <div className="register-wrapper">
       <h1>{language === "english" ? "Register" : "Daftar"}</h1>
       <form className="register-form">
-        <input type="text" placeholder={language === "english" ? "e.g John" : "e.g Budi"} value={name} onChange={setName} />
-        <input type="email" placeholder={language === "english" ? "e.g johndoe@gmail.com" : "budidoremi@gmail.com"} value={email} onChange={setEmail} />
-        <input type="password" placeholder={language === "english" ? "e.g John123" : "e.g Budi123"} value={password} onChange={setPassword} />
-        <input type="password" placeholder={language === "english" ? "Password confirmation" : "Konfirmasi kata sandi"} value={passwordConfirmation} onChange={setPasswordConfirmation} />
-        <button onClick={onRegisterHandler} className="submit-button" disabled={isLoading}>
+        <input
+          type="text"
+          placeholder={language === "english" ? "e.g John" : "e.g Budi"}
+          value={name}
+          onChange={setName}
+        />
+        <input
+          type="email"
+          placeholder={
+            language === "english"
+              ? "e.g johndoe@gmail.com"
+              : "budidoremi@gmail.com"
+          }
+          value={email}
+          onChange={setEmail}
+        />
+        <input
+          type="password"
+          placeholder={language === "english" ? "e.g John123" : "e.g Budi123"}
+          value={password}
+          onChange={setPassword}
+        />
+        <input
+          type="password"
+          placeholder={
+            language === "english"
+              ? "Password confirmation"
+              : "Konfirmasi kata sandi"
+          }
+          value={passwordConfirmation}
+          onChange={setPasswordConfirmation}
+        />
+        <button
+          onClick={onRegisterHandler}
+          className="submit-button"
+          disabled={isLoading}
+        >
           {language === "english" ? "Register" : "Daftar"}
         </button>
         <p className="redirect">
-          {language === "english" ? "Already have an account?" : "Sudah memiliki akun?"} <a href="/login">{language === "english" ? "Login here" : "Masuk di sini"}</a>
+          {language === "english"
+            ? "Already have an account?"
+            : "Sudah memiliki akun?"}{" "}
+          <a href="/login">
+            {language === "english" ? "Login here" : "Masuk di sini"}
+          </a>
         </p>
       </form>
     </div>

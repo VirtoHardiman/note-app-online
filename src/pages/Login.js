@@ -23,7 +23,7 @@ const Login = () => {
       if (status === "success") {
         localStorage.setItem("username", JSON.stringify(userData.name));
         toggleToaster(message);
-        navigate("/");
+        navigate("/note-app-online");
       }
       setIsLoading(false);
       return toggleToaster(message);
@@ -36,14 +36,32 @@ const Login = () => {
     <div className="login-wrapper">
       <h1>{language === "english" ? "Login" : "Masuk"}</h1>
       <form className="login-form">
-        <input type="email" placeholder={language === "english" ? "Your email" : "Email anda"} value={email} onChange={setEmail} />
-        <input type="password" placeholder={language === "english" ? "Your password" : "Kata sandi anda"} value={password} onChange={setPassword} />
-        <button onClick={onLogin} className="submit-button" disabled={isLoading}>
+        <input
+          type="email"
+          placeholder={language === "english" ? "Your email" : "Email anda"}
+          value={email}
+          onChange={setEmail}
+        />
+        <input
+          type="password"
+          placeholder={
+            language === "english" ? "Your password" : "Kata sandi anda"
+          }
+          value={password}
+          onChange={setPassword}
+        />
+        <button
+          onClick={onLogin}
+          className="submit-button"
+          disabled={isLoading}
+        >
           {language === "english" ? "Login" : "Masuk"}
         </button>
         <p className="redirect">
           {language === "english" ? "New user?" : "Pengguna baru?"}
-          <a href="/register">{language === "english" ? "Sign up here" : "Daftar di sini"}</a>
+          <a href="/register">
+            {language === "english" ? "Sign up here" : "Daftar di sini"}
+          </a>
         </p>
       </form>
     </div>

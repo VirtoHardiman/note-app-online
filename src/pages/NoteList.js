@@ -58,7 +58,7 @@ const NoteList = () => {
   const showSelectedNote = (id) => {
     setTransition(true);
     setTimeout(() => {
-      navigate(`/note/${id}`);
+      navigate(`/note-app-online/note/${id}`);
     }, 800);
   };
 
@@ -80,11 +80,34 @@ const NoteList = () => {
   }
 
   return (
-    <div className={`page-overlay ${transition ? theme : ""}`} onClick={() => toggleSearchBar(false)}>
+    <div
+      className={`page-overlay ${transition ? theme : ""}`}
+      onClick={() => toggleSearchBar(false)}
+    >
       <div className={`notes-wrapper ${transition ? "hide" : ""}`}>
-        {notes.length !== 0 ? notes.map((note) => <NoteCard note={note} showSelectedNote={showSelectedNote} key={note.id} />) : <EmptyState message="Note's not found" />}
-        <DashboardActions showSearchbar={searchbar} toggleSearchBar={toggleSearchBar} noteList={true} />
-        <SearchBar showSearchbar={searchbar} toggleSearchBar={toggleSearchBar} keyword={keyword} keywordHandler={keywordHandler} onSearch={onSearch} />
+        {notes.length !== 0 ? (
+          notes.map((note) => (
+            <NoteCard
+              note={note}
+              showSelectedNote={showSelectedNote}
+              key={note.id}
+            />
+          ))
+        ) : (
+          <EmptyState message="Note's not found" />
+        )}
+        <DashboardActions
+          showSearchbar={searchbar}
+          toggleSearchBar={toggleSearchBar}
+          noteList={true}
+        />
+        <SearchBar
+          showSearchbar={searchbar}
+          toggleSearchBar={toggleSearchBar}
+          keyword={keyword}
+          keywordHandler={keywordHandler}
+          onSearch={onSearch}
+        />
       </div>
     </div>
   );

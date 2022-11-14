@@ -52,7 +52,7 @@ const ArchiveList = () => {
   const showSelectedNote = (id) => {
     setTransition(true);
     setTimeout(() => {
-      navigate(`/note/${id}`);
+      navigate(`/note-app-online/note/${id}`);
     }, 800);
   };
 
@@ -71,13 +71,36 @@ const ArchiveList = () => {
 
   return (
     <>
-      <div className={`page-overlay ${transition ? theme : ""} darker`} onClick={() => toggleSearchBar(false)}>
+      <div
+        className={`page-overlay ${transition ? theme : ""} darker`}
+        onClick={() => toggleSearchBar(false)}
+      >
         <div className={`notes-wrapper ${transition ? "hide" : ""}`}>
-          {notes.length !== 0 ? notes.map((note) => <NoteCard note={note} showSelectedNote={showSelectedNote} key={note.id} />) : <EmptyState message="Archive's not found" />}
+          {notes.length !== 0 ? (
+            notes.map((note) => (
+              <NoteCard
+                note={note}
+                showSelectedNote={showSelectedNote}
+                key={note.id}
+              />
+            ))
+          ) : (
+            <EmptyState message="Archive's not found" />
+          )}
 
-          <DashboardActions showSearchbar={searchbar} toggleSearchBar={toggleSearchBar} noteList={false} />
+          <DashboardActions
+            showSearchbar={searchbar}
+            toggleSearchBar={toggleSearchBar}
+            noteList={false}
+          />
 
-          <SearchBar showSearchbar={searchbar} toggleSearchBar={toggleSearchBar} keyword={keyword} keywordHandler={keywordHandler} onSearch={onSearch} />
+          <SearchBar
+            showSearchbar={searchbar}
+            toggleSearchBar={toggleSearchBar}
+            keyword={keyword}
+            keywordHandler={keywordHandler}
+            onSearch={onSearch}
+          />
         </div>
       </div>
     </>

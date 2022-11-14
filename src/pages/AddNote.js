@@ -25,7 +25,11 @@ const AddNote = () => {
     event.preventDefault();
     setIsLoading(true);
     if (!title || !body.current) {
-      toggleToaster(language === "english" ? "Note title and content is required!" : "Judul dan isi catatan wajib diisi!");
+      toggleToaster(
+        language === "english"
+          ? "Note title and content is required!"
+          : "Judul dan isi catatan wajib diisi!"
+      );
       return setIsLoading(false);
     }
     const editedBody = body.current;
@@ -33,7 +37,7 @@ const AddNote = () => {
     if (status === "success") {
       toggleToaster(message);
       setIsLoading(false);
-      navigate("/");
+      navigate("/note-app-online");
     }
     setIsLoading(false);
     toggleToaster(message);
@@ -42,8 +46,27 @@ const AddNote = () => {
   return (
     <div className={`add-note ${theme}`}>
       <form className="add-container">
-        <TextareaAutosize name="title-input" value={title} placeholder={language === "english" ? "e.g Today's Agenda" : "e.g Agenda Hari Ini"} className="title-input" onInput={setTitle} />
-        <ContentEditable html={body.current} onChange={bodyInputHandler} data-placeholder={language === "english" ? "e.g 1. Jogging at 8 AM" : "e.g 1. Jam 8 lari pagi"} className="body-input" />
+        <TextareaAutosize
+          name="title-input"
+          value={title}
+          placeholder={
+            language === "english"
+              ? "e.g Today's Agenda"
+              : "e.g Agenda Hari Ini"
+          }
+          className="title-input"
+          onInput={setTitle}
+        />
+        <ContentEditable
+          html={body.current}
+          onChange={bodyInputHandler}
+          data-placeholder={
+            language === "english"
+              ? "e.g 1. Jogging at 8 AM"
+              : "e.g 1. Jam 8 lari pagi"
+          }
+          className="body-input"
+        />
         <button onClick={submitNote} className="check-button">
           <MdOutlineCheck className="check-icon" />
         </button>

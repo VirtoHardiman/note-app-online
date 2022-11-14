@@ -1,6 +1,14 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdOutlineNoteAdd, MdOutlineSearch, MdOutlineWbSunny, MdOutlineDarkMode, MdInventory, MdArticle, MdGTranslate } from "react-icons/md";
+import {
+  MdOutlineNoteAdd,
+  MdOutlineSearch,
+  MdOutlineWbSunny,
+  MdOutlineDarkMode,
+  MdInventory,
+  MdArticle,
+  MdGTranslate,
+} from "react-icons/md";
 import PropTypes from "prop-types";
 
 import { ThemeContext, LanguageContext } from "../App";
@@ -12,18 +20,31 @@ const DashboardActions = ({ showSearchbar, toggleSearchBar, noteList }) => {
 
   return (
     <>
-      <button onClick={() => navigate("/new")} className="add-button">
+      <button
+        onClick={() => navigate("/note-app-online/new")}
+        className="add-button"
+      >
         <MdOutlineNoteAdd className="add-icon" alt="add-icon" />
       </button>
       <button onClick={toggleTheme} className="theme-button">
-        {theme === "light" ? <MdOutlineDarkMode className="theme-icon" alt="moon-icon" /> : <MdOutlineWbSunny className="theme-icon" alt="sun-icon" />}
+        {theme === "light" ? (
+          <MdOutlineDarkMode className="theme-icon" alt="moon-icon" />
+        ) : (
+          <MdOutlineWbSunny className="theme-icon" alt="sun-icon" />
+        )}
       </button>
       {noteList ? (
-        <button onClick={() => navigate("/archives")} className="archive-list-button">
+        <button
+          onClick={() => navigate("/note-app-online/archives")}
+          className="archive-list-button"
+        >
           <MdInventory className="archive-list-icon" alt="archive-list-icon" />
         </button>
       ) : (
-        <button onClick={() => navigate("/")} className="note-list-button">
+        <button
+          onClick={() => navigate("/note-app-online")}
+          className="note-list-button"
+        >
           <MdArticle className="note-list-icon" alt="note-list-icon" />
         </button>
       )}

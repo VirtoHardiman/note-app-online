@@ -78,12 +78,7 @@ const App = () => {
             <Routes>
               <Route
                 exact
-                path="/note-app-online"
-                element={<Navigate replace to="/" />}
-              />
-              <Route
-                exact
-                path="/register"
+                path="/note-app-online/register"
                 element={
                   <AuthenticatedRoute checkLoggedIn={true} isRegister={true}>
                     <Register />
@@ -92,7 +87,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/login"
+                path="/note-app-online/login"
                 element={
                   <AuthenticatedRoute checkLoggedIn={true}>
                     <Login />
@@ -101,7 +96,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/"
+                path="/note-app-online"
                 element={
                   <AuthenticatedRoute>
                     <NoteList />
@@ -110,7 +105,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/archives"
+                path="/note-app-online/archives"
                 element={
                   <AuthenticatedRoute>
                     <ArchiveList />
@@ -119,7 +114,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/note/:id"
+                path="/note-app-online/note/:id"
                 element={
                   <AuthenticatedRoute>
                     <NoteDetail />
@@ -128,7 +123,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/new"
+                path="/note-app-online/new"
                 element={
                   <AuthenticatedRoute>
                     <AddNote />
