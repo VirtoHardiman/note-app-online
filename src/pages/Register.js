@@ -82,7 +82,7 @@ const Register = () => {
           {language === "english"
             ? "Already have an account?"
             : "Sudah memiliki akun?"}{" "}
-          <a href="/login">
+          <a href="/note-app-online/login">
             {language === "english" ? "Login here" : "Masuk di sini"}
           </a>
         </p>

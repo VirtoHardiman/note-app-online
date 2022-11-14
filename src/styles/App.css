@@ -674,6 +674,10 @@ body[data-theme="dark"] .submit-button:disabled {
   color: #252525;
 }
 
+body[data-theme="dark"] .redirect p {
+  color: #ececec;
+}
+
 body[data-theme="dark"] .redirect a {
   color: #ececec;
 }

@@ -59,7 +59,7 @@ const Login = () => {
         </button>
         <p className="redirect">
           {language === "english" ? "New user?" : "Pengguna baru?"}
-          <a href="/register">
+          <a href="/note-app-online/register">
             {language === "english" ? "Sign up here" : "Daftar di sini"}
           </a>
         </p>
