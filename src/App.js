@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useMemo } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Register from "./pages/Register";
@@ -69,7 +69,7 @@ const App = () => {
   }, [toaster]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ThemeContext.Provider value={themeValue}>
         <LanguageContext.Provider value={languageValue}>
           <ToasterContext.Provider value={toasterValue}>
@@ -78,7 +78,7 @@ const App = () => {
             <Routes>
               <Route
                 exact
-                path="/note-app-online/register"
+                path="/register"
                 element={
                   <AuthenticatedRoute checkLoggedIn={true} isRegister={true}>
                     <Register />
@@ -87,7 +87,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/note-app-online/login"
+                path="/login"
                 element={
                   <AuthenticatedRoute checkLoggedIn={true}>
                     <Login />
@@ -96,7 +96,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/note-app-online"
+                path="/"
                 element={
                   <AuthenticatedRoute>
                     <NoteList />
@@ -105,7 +105,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/note-app-online/archives"
+                path="/archives"
                 element={
                   <AuthenticatedRoute>
                     <ArchiveList />
@@ -114,7 +114,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/note-app-online/note/:id"
+                path="/note/:id"
                 element={
                   <AuthenticatedRoute>
                     <NoteDetail />
@@ -123,7 +123,7 @@ const App = () => {
               />
               <Route
                 exact
-                path="/note-app-online/new"
+                path="/new"
                 element={
                   <AuthenticatedRoute>
                     <AddNote />
@@ -135,7 +135,7 @@ const App = () => {
           </ToasterContext.Provider>
         </LanguageContext.Provider>
       </ThemeContext.Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

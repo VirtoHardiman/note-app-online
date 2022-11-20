@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { login, putAccessToken, getUserLogged } from "../utils/network-data";
 import { LanguageContext, ToasterContext } from "../App";
@@ -23,7 +23,7 @@ const Login = () => {
       if (status === "success") {
         localStorage.setItem("username", JSON.stringify(userData.name));
         toggleToaster(message);
-        navigate("/note-app-online");
+        navigate("/");
       }
       setIsLoading(false);
       return toggleToaster(message);
@@ -59,9 +59,9 @@ const Login = () => {
         </button>
         <p className="redirect">
           {language === "english" ? "New user?" : "Pengguna baru?"}
-          <a href="/note-app-online/register">
+          <Link to="/register">
             {language === "english" ? "Sign up here" : "Daftar di sini"}
-          </a>
+          </Link>
         </p>
       </form>
     </div>

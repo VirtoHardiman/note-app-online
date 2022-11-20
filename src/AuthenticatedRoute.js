@@ -15,14 +15,14 @@ const AuthenticatedRoute = ({
         !localStorage.getItem("username")) &&
       !isRegister
     ) {
-      return navigate("/note-app-online/login");
+      return navigate("/login");
     }
     if (checkLoggedIn) {
       if (
-        localStorage.getItem("accessToken") ||
+        localStorage.getItem("accessToken") &&
         localStorage.getItem("username")
       ) {
-        return navigate("/note-app-online");
+        return navigate("/");
       }
     }
   }, []);

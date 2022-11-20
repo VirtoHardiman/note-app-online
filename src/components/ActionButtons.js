@@ -22,7 +22,7 @@ const ActionButtons = ({ note, showButtons, toggleActionButtons }) => {
     const { status, message } = await archiveNote(note.id);
     if (status === "success") {
       toggleToaster(message);
-      navigate("/note-app-online/archives");
+      navigate("/archives");
     }
     setIsLoading(false);
     toggleToaster(message);
@@ -33,7 +33,7 @@ const ActionButtons = ({ note, showButtons, toggleActionButtons }) => {
     const { status, message } = await unarchiveNote(note.id);
     if (status === "success") {
       toggleToaster(message);
-      navigate("/note-app-online");
+      navigate("/");
     }
     setIsLoading(false);
     toggleToaster(message);
@@ -44,9 +44,7 @@ const ActionButtons = ({ note, showButtons, toggleActionButtons }) => {
     const { status, message } = await deleteNote(note.id);
     if (status === "success") {
       toggleToaster(message);
-      note.archived
-        ? navigate("/note-app-online/archives")
-        : navigate("/note-app-online");
+      note.archived ? navigate("/archives") : navigate("/");
     }
     setIsLoading(false);
     toggleToaster(message);

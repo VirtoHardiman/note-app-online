@@ -20,10 +20,7 @@ const DashboardActions = ({ showSearchbar, toggleSearchBar, noteList }) => {
 
   return (
     <>
-      <button
-        onClick={() => navigate("/note-app-online/new")}
-        className="add-button"
-      >
+      <button onClick={() => navigate("/new")} className="add-button">
         <MdOutlineNoteAdd className="add-icon" alt="add-icon" />
       </button>
       <button onClick={toggleTheme} className="theme-button">
@@ -35,16 +32,13 @@ const DashboardActions = ({ showSearchbar, toggleSearchBar, noteList }) => {
       </button>
       {noteList ? (
         <button
-          onClick={() => navigate("/note-app-online/archives")}
+          onClick={() => navigate("/archives")}
           className="archive-list-button"
         >
           <MdInventory className="archive-list-icon" alt="archive-list-icon" />
         </button>
       ) : (
-        <button
-          onClick={() => navigate("/note-app-online")}
-          className="note-list-button"
-        >
+        <button onClick={() => navigate("/")} className="note-list-button">
           <MdArticle className="note-list-icon" alt="note-list-icon" />
         </button>
       )}

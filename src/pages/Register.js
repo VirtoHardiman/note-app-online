@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { register } from "../utils/network-data";
 import { LanguageContext, ToasterContext } from "../App";
@@ -29,7 +29,7 @@ const Register = () => {
     const { status, message } = await register({ name, email, password });
     if (status === "success") {
       toggleToaster(message);
-      navigate("/note-app-online/login");
+      navigate("/login");
     }
     setIsLoading(false);
     toggleToaster(message);
@@ -82,9 +82,9 @@ const Register = () => {
           {language === "english"
             ? "Already have an account?"
             : "Sudah memiliki akun?"}{" "}
-          <a href="/note-app-online/login">
+          <Link to="/login">
             {language === "english" ? "Login here" : "Masuk di sini"}
-          </a>
+          </Link>
         </p>
       </form>
     </div>

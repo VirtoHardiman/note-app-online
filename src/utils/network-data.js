@@ -29,7 +29,11 @@ async function login({ email, password }) {
 
   const responseJson = await response.json();
 
-  return { status: responseJson.status, message: responseJson.message, data: responseJson.data };
+  return {
+    status: responseJson.status,
+    message: responseJson.message,
+    data: responseJson.data,
+  };
 }
 
 async function register({ name, email, password }) {
@@ -50,7 +54,11 @@ async function getUserLogged() {
   const response = await fetchWithToken(`${BASE_URL}/users/me`);
   const responseJson = await response.json();
 
-  return { status: responseJson.status, message: responseJson.message, data: responseJson.data };
+  return {
+    status: responseJson.status,
+    message: responseJson.message,
+    data: responseJson.data,
+  };
 }
 
 async function addNote({ title, body }) {
@@ -134,14 +142,22 @@ const searchNotes = async (keyword, archived) => {
   if (archived) {
     const { error, data } = await getArchivedNotes();
     if (!error) {
-      const filteredActiveNotes = data.filter((note) => note.title.toLowerCase().includes(keyword.toLowerCase()) && note.archived);
+      const filteredActiveNotes = data.filter(
+        (note) =>
+          note.title.toLowerCase().includes(keyword.toLowerCase()) &&
+          note.archived
+      );
       return { error: false, data: filteredActiveNotes };
     }
     return { error: true, data: null };
   }
   const { error, data } = await getActiveNotes();
   if (!error) {
-    const filteredArchivedNotes = data.filter((note) => note.title.toLowerCase().includes(keyword.toLowerCase()) && !note.archived);
+    const filteredArchivedNotes = data.filter(
+      (note) =>
+        note.title.toLowerCase().includes(keyword.toLowerCase()) &&
+        !note.archived
+    );
     return { error: false, data: filteredArchivedNotes };
   }
   return { error: true, data: null };
@@ -154,7 +170,25 @@ const showFormattedDate = (date, language) => {
     month: "long",
     day: "numeric",
   };
-  return new Date(date).toLocaleDateString(language === "english" ? "en-US" : "id-ID", options);
+  return new Date(date).toLocaleDateString(
+    language === "english" ? "en-US" : "id-ID",
+    options
+  );
 };
 
-export { getAccessToken, putAccessToken, login, register, getUserLogged, addNote, getActiveNotes, getArchivedNotes, getNote, archiveNote, unarchiveNote, deleteNote, searchNotes, showFormattedDate };
+export {
+  getAccessToken,
+  putAccessToken,
+  login,
+  register,
+  getUserLogged,
+  addNote,
+  getActiveNotes,
+  getArchivedNotes,
+  getNote,
+  archiveNote,
+  unarchiveNote,
+  deleteNote,
+  searchNotes,
+  showFormattedDate,
+};

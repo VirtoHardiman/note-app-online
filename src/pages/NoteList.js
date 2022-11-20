@@ -58,7 +58,7 @@ const NoteList = () => {
   const showSelectedNote = (id) => {
     setTransition(true);
     setTimeout(() => {
-      navigate(`/note-app-online/note/${id}`);
+      navigate(`/note/${id}`);
     }, 800);
   };
 

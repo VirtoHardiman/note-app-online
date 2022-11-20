@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { MdOutlineCheck, MdOutlinePalette } from "react-icons/md";
+import { MdOutlineCheck } from "react-icons/md";
 import TextareaAutosize from "react-textarea-autosize";
 import ContentEditable from "react-contenteditable";
 
@@ -37,7 +37,7 @@ const AddNote = () => {
     if (status === "success") {
       toggleToaster(message);
       setIsLoading(false);
-      navigate("/note-app-online");
+      navigate("/");
     }
     setIsLoading(false);
     toggleToaster(message);
